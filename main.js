@@ -1,31 +1,72 @@
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); 
-  }
+let nome, vida, forca, dinheiro;
+let dado;
 
-let readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+function start() {
+    let i;
+    heroProperties();
 
-let nome;
-let vida = getRandomInt(1, 20);
-let forca = getRandomInt(1, 20);
-let dinheiro = getRandomInt(1, 120);
+    alert("O cientista do mal Thiaguitoz, anos atrás, sintetizou um vírus "
+        + "que leva os infectados a se comportarem como zumbis. Nosso herói, "
+        + nome + ", faz parte de um grupo de pessoas que lutam para sobreviver "
+        + "e encontrar o antídoto para salvar os infectados."
+    )
 
-readline.question("Insira o nome do herói: ", (nome) =>{
-    if(nome != null)
-        readline.pause();
-});
+    for(i = 0; i < 11; i++) {
+        alert("RODADA " + i + "\n"
+            + "Vida: " + vida + "\n"
+            + "Força: " + forca + "\n"
+            + "Dinheiro: " + dinheiro
+        );
 
-readline.question("O herói %s está pronto!\nVida: %i\n"
-                + "Força: %i, Dinheiro: %i\nPara iniciar, "
-                + "digite 'start()'\n", nome, vida, forca, dinheiro, (answer) =>{
-                    if(answer == "start()") 
-                        readline.pause();
-                    else
-                        console.log("Jogo Encerrado.");
-                });
+        if(vida > 0) {
+            dado = jogarDado();
+            alert("Você tirou " + dado + " no dado.");
+            
+        }
+        else {
+            alert("Você perdeu. Jogo Encerrado.");
+            break;
+        }
 
-console.log("RODADA 1: ");
+
+    }
+
+}
+
+function heroProperties () {
+    nome = prompt("Insira o nome do herói: ");
+    vida = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
+    forca = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    dinheiro = Math.floor(Math.random() * (150 - 50 + 1)) + 50;
+}
+
+function jogarDado() {
+    return Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+}
+
+const consequencias = [
+    {
+        desc: 'Você encontra um zumbi muito irritado.',
+        dano: -8,
+    },
+    {
+        desc: 'Você foi ao bar e entrou em briga embriagado, foi espancado.',
+        dano: -10,
+    },
+    {
+        desc: 'Você é abordado por um ladrão.',
+        dano: -2,
+    },
+    {
+        desc: 'Você comeu um cogumelo venenoso.',
+        dano: -20,
+    },
+    {
+        desc: 'Você venceu uma luta de rua.',
+        dano: -4,
+    },
+    {
+        desc: 'Você '
+    }
+
+]
