@@ -12,6 +12,12 @@ function start() {
     )
 
     for(i = 0; i < 6; i++) {
+
+        if(vida > 0 && i == 5) {
+            alert("Ufa! Você sobreviveu a todas as rodadas. Parabéns, " + nome);
+            break;
+        }
+        
         alert("RODADA " + i + "\n"
             + "Vida: " + vida + "\n"
             + "Força: " + forca + "\n"
@@ -29,16 +35,13 @@ function start() {
             alert("Você perdeu. Jogo Encerrado.");
             break;
         }
-        if(vida > 0 && i == 5) {
-            alert("Ufa! Você sobreviveu a todas as rodadas. Parabéns, " + nome);
-        }
     }
 
 }
 
 function heroProperties () {
     nome = prompt("Insira o nome do herói: ");
-    vida = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+    vida = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     forca = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
     dinheiro = Math.floor(Math.random() * (200 - 50 + 1)) + 50;
 }
